@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>FREE URL Shortener</title>
+	<link rel="stylesheet" href="output.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+</head>
+
+<body class="scroller">
+	<nav class="text-yellow-400 bg-sky-800 flex items-center p-3 flex-wrap">
+		<span class="hover:text-gray-200 p-2 mr-4 inline-flex items-center cursor-pointer">
+			FREE URL Shortner
+		</span>
+		<button
+			class="inline-flex p-3 cursor-pointer rounded lg:hidden ml-auto nav-toggler outline-none focus:outline-none"
+			data-target="#navigation">
+			<span class="material-icons"><i class="fas fa-bars"></i></span>
+		</button>
+		<div class="hidden top-navbar w-full lg:inline-flex lg:flex-grow lg:w-auto cursor-pointer" id="navigation">
+			<div
+				class="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start flex flex-col lg:h-auto">
+				<a href="/"
+					class="hover:text-gray-200 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded  items-center justify-center">
+					<span>Short</span>
+				</a>
+				<a href="/"
+					class="hover:text-gray-200 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded  items-center justify-center">
+					<span>Statistics</span>
+				</a>
+			</div>
+		</div>
+	</nav>
+
+	<section class="antialiased bg-sky-800 text-blue-500 h-screen px-4" id="list">
+		<div class="flex flex-col justify-center h-full">
+			<div class="w-full max-w-2xl mx-auto bg-yellow-400 shadow-lg rounded-sm border border-gray-200">
+				<header class="px-5 py-4 border-b border-gray-100">
+					<h2 class="font-semibold text-blue-500">Public URLs</h2>
+				</header>
+				<div class="p-3">
+					<div class="overflow-x-auto">
+						<table class="table-auto w-full">
+							<thead class="text-xs font-semibold uppercase text-blue-400 bg-yellow-50">
+								<tr>
+									<th class="p-2 whitespace-nowrap">
+										<div class="font-semibold text-left">Full URL</div>
+									</th>
+									<th class="p-2 whitespace-nowrap">
+										<div class="font-semibold text-left">Shorted URL</div>
+									</th>
+									<th class="p-2 whitespace-nowrap">
+										<div class="font-semibold text-left">Clicks</div>
+									</th>
+								</tr>
+							</thead>
+							<tbody class="text-sm divide-y divide-yellow-100">
+								<% urls.forEach(url=> { %>
+									<tr>
+										<td class="p-2 whitespace-nowrap">
+											<div class="text-left font-semibold"><a href="<%= url.url %>">
+													<%= url.url %>
+												</a></div>
+										</td>
+										<td class="p-2 whitespace-nowrap">
+											<div class="text-left font-semibold"><a href="<%= '/' + url.shortURL %>">
+													<%= '/' + url.shortURL %>
+												</a></div>
+										</td>
+										<td class="p-2 whitespace-nowrap">
+											<div class="text-left font-semibold text-sky-500 ">
+												<%= url.clicks %>
+											</div>
+										</td>
+									</tr>
+									<% }) %>
+							</tbody>
+						</table>
+					</div>
+					<div class='flex items-center justify-center bg-sky-800 rounded-2xl m-8'>
+						<div class="flex flex-col items-center mb-8 px-4 mx-auto mt-8">
+							<div class="font-sans flex justify-end space-x-1 select-none">
+								<a href="/list?page=<%= page - 1%>"
+									class="flex items-center px-4 py-2 font-semibold text-blue-500 bg-yellow-400 rounded-md">
+									Previous
+								</a>
+								<a href="/list?page=<%= page + 1%>"
+									class="px-4 py-2 font-semibold text-blue-500 bg-yellow-400 rounded-md">
+									Next
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer class="flex flex-wrap items-center md:justify-between justify-center bg-sky-800 text-yellow-400">
+		<div class="w-full md:w-4/12 px-4 mx-auto text-center">
+			<div class="text-sm text-blueGray-500 font-semibold py-1">
+				Copyright © <span>2022</span><a href="/" class="hover:text-gray-200"> ShortLink </a> by
+				<a href="https://aliredahajj.com" class="hover:text-gray-200">Ali Reda Hajj</a>.
+			</div>
+		</div>
+	</footer>
+
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "devStart": "nodemon index.js",
+    "postCSS": "npx tailwindcss -i ./public/input.css -o ./public/output.css --watch"
+  },
+  "author": "ARH & MurtajaZiad",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.9.5",
+    "mongoose-paginate": "^5.0.3",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "tailwindcss": "^3.0.24"
+  }
+}
